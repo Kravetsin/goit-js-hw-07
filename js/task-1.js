@@ -1,22 +1,12 @@
-class User {
-  constructor(email) {
-    this.email = email;
-  }
+const category = document.getElementById("categories");
+const list = category.querySelectorAll(".item");
 
-  get email() {
-    return this.email;
-  }
+console.log(`Number of categories: ${list.length}`);
+const getList = (list) => {
+  return list.forEach((list) => {
+    console.log(`Category: ${list.querySelector("h2").textContent}`);
+    console.log(`Elements: ${list.querySelectorAll("li").length}`);
+  });
+};
 
-  set email(newEmail) {
-    this.email = newEmail;
-  }
-}
-
-class Admin extends User {
-  static role = { BASIC: "basic", SUPERUSER: "superuser" };
-  constructor(params) {
-    this.role = params.role;
-  }
-}
-
-console.log(Admin.role.SUPERUSER);
+getList(list);
