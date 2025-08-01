@@ -25,19 +25,13 @@ const images = [
   },
 ];
 
-const createImg = (ulSelector, items) => {
-  const ul = document.querySelector(ulSelector);
+const createImg = (selector, items) => {
+  const gallery = document.querySelector(selector);
+  const markup = items
+    .map(({ url, alt }) => `<li><img src="${url}" alt="${alt}"></li>`)
+    .join("");
 
-  items.forEach(({ url, alt }) => {
-    const li = document.createElement("li");
-    const img = document.createElement("img");
-
-    img.src = url;
-    img.alt = alt;
-
-    li.appendChild(img);
-    ul.appendChild(li);
-  });
+  gallery.insertAdjacentHTML("beforeend", markup);
 };
 
-createImg("ul", images);
+createImg(".gallery", images);
